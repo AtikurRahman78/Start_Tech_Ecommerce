@@ -72,21 +72,24 @@ async function createProductController(req, res) {
 
 async function createVariantController(req, res) {
 
-    const { name, image, product } = req.body;
+    const { color, image, product, storage, ram, size, price, quantity } = req.body;
 
-    if (!name) {
-        return res.json({ error: 'Name is required!' });
-    } else if (!image) {
-        return res.json({ error: 'Image is required!' });
-    } else if (!product) {
+    console.log(req.file.filename);
+
+    if (!product) {
         return res.json({ error: 'Product is required!' });
     } else {
 
         const variant = new Variant({
 
-            name,
-            image,
-            product
+            color,
+            image : `${process.env.IMAGE_PATH}/uploads/${req.file.filename}`,
+            product,
+            storage,
+            ram,
+            size,
+            price,
+            quantity
 
         });
 

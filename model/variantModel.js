@@ -4,26 +4,32 @@ const { Schema } = mongoose;
 
 const variantSchema = new Schema({
 
-    name: {
+    color: {
         type: String,
-        required: true,
     },
     image: {
         type: String,
+    },
+    product: {
+        type: Schema.Types.ObjectId,
+        ref: 'Product',
         required: true,
     },
-    option: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'Option',
-        }
-    ],
-    product: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'Product',
-        }
-    ],
+    storage: {
+        type: String,
+    },
+    ram: {
+        type: String,
+    },
+    size: {
+        type: String,
+    },
+    price: {
+        type: String,
+    },
+    quantity: {
+        type: String,
+    },
     updated: {
         type: Date,
     },
